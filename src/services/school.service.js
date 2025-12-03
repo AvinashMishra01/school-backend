@@ -35,7 +35,7 @@
 import pool from "../database/db.js";
 
 export const addSchool = async (data) => {
-  const sql = `INSERT INTO school (name, address, city, state, contact, email_id, image)
+  const sql = `INSERT INTO school (name, address, city, state, contact, email_id, image, image_file)
                VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
   const params = [
@@ -45,6 +45,7 @@ export const addSchool = async (data) => {
     data.state,
     data.contact,
     data.email_id,
+    "dummy",
     data.image
   ];
   console.log("save data call",params);
@@ -76,5 +77,6 @@ export const getSchools = async (limit, offset) => {
   return { rows, totalCount: count.totalCount };
 
 };
+
 
 
