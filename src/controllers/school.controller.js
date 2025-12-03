@@ -48,6 +48,7 @@ export const addSchoolController = async (req, res) => {
 
     res.json({ message: "School added!", id: result.insertId });
   } catch (err) {
+    console.log("error in save school", err.message);
     res.status(500).json({ error: err.message });
   }
 };
@@ -81,6 +82,8 @@ export const getSchoolsController = async (req, res) => {
       totalPages: Math.ceil(total / limit),
     });
   } catch (err) {
+    console.log("error in get school", err.message)
     res.status(500).json({ error: err.message });
   }
 };
+
