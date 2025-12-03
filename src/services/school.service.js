@@ -47,7 +47,7 @@ export const addSchool = async (data) => {
     data.email_id,
     data.image
   ];
-
+  console.log("save data call",params);
   const [result] = await pool.query(sql, params);
   return result;
 };
@@ -63,6 +63,7 @@ export const getSchools = async (limit, offset) => {
   
 //   const [rows] = await pool.query(query, [limit, offset]);
 //   return rows;
+  console.log("get data call")
   const [rows] = await pool.query(
     'SELECT * FROM schools LIMIT ? OFFSET ?',
     [limit, offset]
@@ -73,4 +74,5 @@ export const getSchools = async (limit, offset) => {
   );
 
   return { rows, totalCount: count.totalCount };
+
 };
