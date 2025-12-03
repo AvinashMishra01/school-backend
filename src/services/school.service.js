@@ -35,8 +35,8 @@
 import pool from "../database/db.js";
 
 export const addSchool = async (data) => {
-  const sql = `INSERT INTO school (name, address, city, state, contact, email_id, image, image_file)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+  const sql = `INSERT INTO schools (name, address, city, state, contact, email_id, image)
+               VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
   const params = [
     data.name,
@@ -45,7 +45,6 @@ export const addSchool = async (data) => {
     data.state,
     data.contact,
     data.email_id,
-    "dummy",
     data.image
   ];
   console.log("save data call",params);
@@ -66,17 +65,18 @@ export const getSchools = async (limit, offset) => {
 //   return rows;
   console.log("get data call")
   const [rows] = await pool.query(
-    'SELECT * FROM school LIMIT ? OFFSET ?',
+    'SELECT * FROM schools LIMIT ? OFFSET ?',
     [limit, offset]
   );
 
   const [[count]] = await pool.query(
-    'SELECT COUNT(*) AS totalCount FROM school'
+    'SELECT COUNT(*) AS totalCount FROM schools'
   );
 
   return { rows, totalCount: count.totalCount };
 
 };
+
 
 
 
