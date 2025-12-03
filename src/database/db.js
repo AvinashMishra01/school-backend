@@ -1,21 +1,4 @@
-// import mysql from "mysql2";
 
-// const db = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "root",       
-//   database: "school"
-// });
-
-// db.connect((err) => {
-//   if (err) {
-//     console.error("DB Connection Failed:", err);
-//   } else {
-//     console.log("MySQL Connected Successfully");
-//   }
-// });
-
-// export default db;
 
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
@@ -32,6 +15,7 @@ const pool = mysql.createPool({
 });
 
 export default pool;
+
 
 
 
