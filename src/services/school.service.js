@@ -65,14 +65,15 @@ export const getSchools = async (limit, offset) => {
 //   return rows;
   console.log("get data call")
   const [rows] = await pool.query(
-    'SELECT * FROM schools LIMIT ? OFFSET ?',
+    'SELECT * FROM school LIMIT ? OFFSET ?',
     [limit, offset]
   );
 
   const [[count]] = await pool.query(
-    'SELECT COUNT(*) AS totalCount FROM schools'
+    'SELECT COUNT(*) AS totalCount FROM school'
   );
 
   return { rows, totalCount: count.totalCount };
 
 };
+
