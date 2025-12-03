@@ -3,38 +3,6 @@ import {
   addSchool,
 } from "../services/school.service.js";
 
-// export async function addSchool(req, res) {
-//   try {
-//     const { name, address, city, state, contact, email_id } = req.body;
-//     const image = req.file ? req.file.filename : null;
-
-//     const insertId = await createSchoolService({
-//       name,
-//       address,
-//       city,
-//       state,
-//       contact,
-//       email_id,
-//       image,
-//     });
-
-//     res.status(201).json({
-//       message: "School added successfully",
-//       id: insertId,
-//     });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// }
-
-// export async function getAllSchools(req, res) {
-//   try {
-//     const schools = await getSchoolsService();
-//     res.json(schools);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// }
 export const addSchoolController = async (req, res) => {
   try {
     const base64Image = req.file.buffer.toString("base64");
@@ -53,17 +21,7 @@ export const addSchoolController = async (req, res) => {
   }
 };
 
-// export const getSchoolsController = async (req, res) => {
-//   try {
-//     const rows = await getSchools();
-//     res.json(rows);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
 
-
-// Backend: getSchoolsController.js
 export const getSchoolsController = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -86,4 +44,5 @@ export const getSchoolsController = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 
